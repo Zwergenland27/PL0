@@ -13,60 +13,20 @@ public class Automata : IDisposable
     private int _currentColumn = 0;
     private char _currentChar = ' ';
     
-    private CharacterClass _getCharacterClass(char character)
-    {
-        CharacterClass characterClass = CharacterClass.Other;
-        
-        //Numbers
-        if (char.IsDigit(character))
-        {
-            characterClass = CharacterClass.Digit;
-        }
-        
-        //Letters
-        if (char.IsLetter(character))
-        {
-            characterClass = CharacterClass.Letter;
-        }
-        
-        //Colon
-        if(character == ':')
-        {
-            characterClass = CharacterClass.Colon;
-        }
-        
-        //Equal
-        if(character == '=')
-        {
-            characterClass = CharacterClass.Equal;
-        }
-        
-        //SmallerThan
-        if(character == '<')
-        {
-            characterClass = CharacterClass.SmallerThan;
-        }
-        
-        //GreaterThan
-        if(character == '>')
-        {
-            characterClass = CharacterClass.GreaterThan;
-        }
-
-        return characterClass;
-    }
-    
     //TODO: Implement the automata table using delegates to the automate methods read, writeRead etc. and add the followState as int parameter
     //[State][CharacterClass as int]
     private Action[][] _automataTable;
 
+    private int[] _characterVector;
+
     public Automata(String filePath)
     {
         _reader = new StreamReader(filePath);
-        _initTable();
+        _initAutomateTable();
+        _initCharacterVector();
     }
 
-    private void _initTable()
+    private void _initAutomateTable()
     {
         //Write read exit states
         void WRE0() => WRE(0);
@@ -109,6 +69,22 @@ public class Automata : IDisposable
         ];
     }
 
+    private void _initCharacterVector()
+    {
+        _characterVector =
+        [
+            /*     0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F*/
+            /*00*/ 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+            /*10*/ 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+            /*20*/ 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            /*30*/ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 0, 5, 4, 6, 0,
+            /*40*/ 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            /*50*/ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0,
+            /*60*/ 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+            /*70*/ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0
+        ];
+    }
+
     public Morph Lex()
     {
         _currentState = 0;
@@ -117,7 +93,7 @@ public class Automata : IDisposable
         _read();
         do
         {
-            var nextState = _automataTable[_currentState][(int)_getCharacterClass(_currentChar)];
+            var nextState = _automataTable[_currentState][_characterVector[_currentChar]];
             _currentState = _followState;
             nextState();
         } while (!_finished);
