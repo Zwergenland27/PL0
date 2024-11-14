@@ -56,9 +56,6 @@ public class Morph
         Type = MorphType.Symbol;
         switch (_value)
         {
-            case ".":
-                _symbol = Symbol.ProgramEnd;
-                break;
             case "CALL":
                 _symbol = Symbol.Call;
                 break;
@@ -100,27 +97,62 @@ public class Morph
         }
     }
 
+    private void _handleState0()
+    {
+        Type = MorphType.Symbol;
+        switch (_value)
+        {
+            case "\0":
+                _symbol = Symbol.EndOfFile;
+                break;
+            case ".":
+                _symbol = Symbol.ProgramEnd;
+                break;
+            case "=":
+                _symbol = Symbol.Equal;
+                break;
+            case "!":
+                _symbol = Symbol.Output;
+                break;
+            case "?":
+                _symbol = Symbol.Input;
+                break;
+            case ",":
+                _symbol = Symbol.Comma;
+                break;
+            case ";":
+                _symbol = Symbol.Semicolon;
+                break;
+            case "+":
+                _symbol = Symbol.Plus;
+                break;
+            case "-":
+                _symbol = Symbol.Minus;
+                break;
+            case "*":
+                _symbol = Symbol.Multiply;
+                break;
+            case "/":
+                _symbol = Symbol.Divide;
+                break;
+        }
+    }
+
     public Morph(int lineNr, int colNr)
     {
         Type = MorphType.Empty;
         LineNr = lineNr;
         ColNr = colNr;
         Length = 0;
-        _value = "";
     }
 
-    public void AppendChar(char character)
+    public void Finish(string value, int lastState)
     {
-        _value += character;
-    }
-
-    public void Finish(int lastState)
-    {
+        _value = value;
         switch (lastState)
         {
             case 0:
-                Type = MorphType.Symbol;
-                _symbol = Symbol.Equal;
+                _handleState0();
                 break;
             case 1:
                 Type = MorphType.Number;

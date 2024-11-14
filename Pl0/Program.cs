@@ -7,19 +7,21 @@ bool end = false;
 do
 {
     var morp = automata.Lex();
-    Console.WriteLine("===================================");
-    Console.WriteLine(morp.Type);
     if (morp.Type == MorphType.Symbol)
     {
-        Console.WriteLine($"{morp.Symbol} at {morp.LineNr}, {morp.ColNr}");
-        if (morp.Symbol == Symbol.ProgramEnd)
+        Console.WriteLine($"SYMBOL {morp.Symbol} at {morp.LineNr}, {morp.ColNr}");
+        if (morp.Symbol == Symbol.EndOfFile)
         {
             end = true;
         }
     }
     if(morp.Type == MorphType.Number)
     {
-        Console.WriteLine($"{morp.Number} at {morp.LineNr}, {morp.ColNr}");
+        Console.WriteLine($"NUMBER {morp.Number} at {morp.LineNr}, {morp.ColNr}");
     }
-    Console.WriteLine("===================================");
+
+    if (morp.Type == MorphType.Identifier)
+    {
+        Console.WriteLine($"IDENTIFIER {morp.Identifier} at {morp.LineNr}, {morp.ColNr}");
+    }
 }while(!end);

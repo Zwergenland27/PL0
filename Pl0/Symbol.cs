@@ -20,5 +20,14 @@ public enum Symbol
     GreaterOrEqual,
     GreaterThan,
     Procedure,
-    ProgramEnd
+    ProgramEnd,
+    EndOfFile,
+    Output,
+    Input,
+    Multiply,
+    Divide,
+    Plus,
+    Minus,
+    Comma,
+    Semicolon,
 }

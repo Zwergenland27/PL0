@@ -1,15 +1,18 @@
+//#define VERBOSE
+
 namespace Pl0;
 
 public class Automata : IDisposable
 {
     private StreamReader _reader;
+    private String _buffer;
 
     private int _currentState = 0;
     private bool _finished = false;
     private Morph? _currentMorph;
     
     private int _currentLine = 1;
-    private int _currentColumn = 0;
+    private int _currentColumn = 1;
     private char _currentChar = ' ';
     
     private Action[][] _automataTable;
@@ -21,10 +24,13 @@ public class Automata : IDisposable
         _reader = new StreamReader(filePath);
         _initAutomateTable();
         _initCharacterVector();
+        _read();
     }
 
     private void _initAutomateTable()
     {
+        //Read
+        void R0() => R(0);
         //Write read exit states
         void WRE0() => WRE(0);
         
@@ -54,7 +60,7 @@ public class Automata : IDisposable
         _automataTable =
         [
             /*State Spec  Dig  Let   Col  Equa  LT   GT   Ot*/
-            /* 0*/ [WRE0, WR1, WUR2, WR3, WRE0, WR4, WR5, E0],
+            /* 0*/ [WRE0, WR1, WUR2, WR3, WRE0, WR4, WR5, R0],
             /* 1*/ [E1,   WR1, E1,   E1,  E1,   E1,  E1,  E1],
             /* 2*/ [E2,   WR2, WUR2, E2,  E2,   E2,  E2,  E2],
             /* 3*/ [E3,   E3,  E3,   E3,  WR6,  E3,  E3,  E3],
@@ -73,7 +79,7 @@ public class Automata : IDisposable
             /*     0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F*/
             /*00*/ 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
             /*10*/ 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
-            /*20*/ 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0,
+            /*20*/ 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             /*30*/ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 0, 5, 4, 6, 0,
             /*40*/ 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
             /*50*/ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0,
@@ -85,27 +91,26 @@ public class Automata : IDisposable
     public Morph Lex()
     {
         _currentState = 0;
-        _currentMorph = null;
+        _currentMorph = new Morph(_currentLine, _currentColumn);
+        _buffer = "";
         _finished = false;
-        _read();
         do
         {
+            #if VERBOSE
             Console.WriteLine($"currently in state {_currentState}");
+            #endif
             var nextState = _automataTable[_currentState][_characterVector[_currentChar]];
             nextState();
         } while (!_finished);
-
-        if (_currentMorph is null)
-        {
-            throw new InvalidDataException("No morph was created");
-        }
 
         return _currentMorph;
     }
 
     public void R(int followState)
     {
+        #if VERBOSE
         Console.WriteLine($"Read and switch to state {followState}");
+        #endif
         _read();
         _currentState = followState;
     }
@@ -115,16 +120,14 @@ public class Automata : IDisposable
         var characterRead = _reader.Read();
         if (characterRead == -1)
         {
-            if (_currentChar == '\0')
-            {
-                throw new InvalidDataException("End of file reached");
-            }
             _currentChar = '\0';
             return;
         }
         
         _currentChar = (char) characterRead;
+        #if VERBOSE
         Console.WriteLine($"Read character {_currentChar}");
+        #endif
         if (_currentChar == '\r')
         {
             _currentLine++;
@@ -133,64 +136,59 @@ public class Automata : IDisposable
         _currentColumn++;
     }
 
+    //TODO: Immer in Buffer schreiben, erst bei Exit den Puffer in das Morphem! -> c=0 wird nicht richtig erkannt
     public void E(int followState)
     {
+        #if VERBOSE
         Console.WriteLine($"Exit and switch to state {followState}");
+        #endif
         _exit();
         _currentState = followState;
     }
     
     private void _exit()
     {
-        if (_currentMorph is null)
-        {
-            throw new InvalidOperationException("No morph was created");
-        }
-        _currentMorph.Finish(_currentState);
+        _currentMorph.Finish(_buffer, _currentState);
         _finished = true;
     }
 
     public void WUR(int followState)
     {
+        #if VERBOSE
         Console.WriteLine($"Write upper read and switch to state {followState}");
+        #endif
         _writeUpperRead();
         _currentState = followState;
     }
     
     private void _writeUpperRead()
     {
-        if (_currentMorph is null)
-        {
-            _currentMorph = new Morph(_currentLine, _currentColumn);
-        }
+        _buffer += char.ToUpper(_currentChar);
         
-        _currentMorph.AppendChar(char.ToUpper(_currentChar));
-
         _read();
     }
 
     public void WR(int followState)
     {
+        #if VERBOSE
         Console.WriteLine($"Write read and switch to state {followState}");
+        #endif
         _writeRead();
         _currentState = followState;
     }
     
     private void _writeRead()
     {
-        if (_currentMorph is null)
-        {
-            _currentMorph = new Morph(_currentLine, _currentColumn);
-        }
-        
-        _currentMorph.AppendChar(_currentChar);
+        _buffer += _currentChar;
 
         _read();
     }
 
     public void WRE(int followState)
     {
+        #if VERBOSE
         Console.WriteLine($"Write read exit and switch to state {followState}");
+        #endif
         _writeReadExit();
         _currentState = followState;
     }
