@@ -94,7 +94,6 @@ public class Automata : IDisposable
         do
         {
             var nextState = _automataTable[_currentState][_characterVector[_currentChar]];
-            _currentState = _followState;
             nextState();
         } while (!_finished);
 
@@ -131,6 +130,7 @@ public class Automata : IDisposable
 
     public void E(int followState)
     {
+        _currentState = _followState;
         _followState = followState;
         _exit();
     }
@@ -147,6 +147,7 @@ public class Automata : IDisposable
 
     public void WUR(int followState)
     {
+        _currentState = _followState;
         _followState = followState;
         _writeUpperRead();
     }
@@ -165,6 +166,7 @@ public class Automata : IDisposable
 
     public void WR(int followState)
     {
+        _currentState = _followState;
         _followState = followState;
         _writeRead();
     }
@@ -183,6 +185,7 @@ public class Automata : IDisposable
 
     public void WRE(int followState)
     {
+        _currentState = _followState;
         _followState = followState;
         _writeReadExit();
     }
