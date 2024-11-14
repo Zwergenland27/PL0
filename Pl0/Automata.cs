@@ -133,8 +133,7 @@ public class Automata : IDisposable
         }
         _currentColumn++;
     }
-
-    //TODO: Immer in Buffer schreiben, erst bei Exit den Puffer in das Morphem! -> c=0 wird nicht richtig erkannt
+    
     public void E(int followState)
     {
         #if VERBOSE
