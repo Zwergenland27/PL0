@@ -5,7 +5,6 @@ namespace Pl0;
 public class Automata : IDisposable
 {
     private StreamReader _reader;
-    private String _buffer;
 
     private int _currentState = 0;
     private bool _finished = false;
@@ -92,7 +91,6 @@ public class Automata : IDisposable
     {
         _currentState = 0;
         _currentMorph = new Morph(_currentLine, _currentColumn);
-        _buffer = "";
         _finished = false;
         do
         {
@@ -148,7 +146,7 @@ public class Automata : IDisposable
     
     private void _exit()
     {
-        _currentMorph.Finish(_buffer, _currentState);
+        _currentMorph!.Finish(_currentState);
         _finished = true;
     }
 
@@ -163,7 +161,7 @@ public class Automata : IDisposable
     
     private void _writeUpperRead()
     {
-        _buffer += char.ToUpper(_currentChar);
+        _currentMorph!.Append(char.ToUpper(_currentChar));
         
         _read();
     }
@@ -179,8 +177,7 @@ public class Automata : IDisposable
     
     private void _writeRead()
     {
-        _buffer += _currentChar;
-
+        _currentMorph!.Append(_currentChar);
         _read();
     }
 

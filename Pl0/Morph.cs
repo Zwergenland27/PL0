@@ -146,9 +146,13 @@ public class Morph
         Length = 0;
     }
 
-    public void Finish(string value, int lastState)
+    public void Append(char character)
     {
-        _value = value;
+        _value += character;
+    }
+
+    public void Finish(int lastState)
+    {
         switch (lastState)
         {
             case 0:
