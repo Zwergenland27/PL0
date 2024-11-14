@@ -3,6 +3,11 @@ namespace Pl0;
 //TODO: Number, Text, Symbol should be implemented in a better way
 public class Morph
 {
+    private Symbol? _symbol;
+
+    private float _number;
+
+    private string? _identifier;
     public MorphType Type { get; private set; }
     
     public int LineNr { get; private init; }
@@ -19,8 +24,8 @@ public class Morph
         {
             if(Type != MorphType.Number)
                 throw new InvalidOperationException("Morph is not a number");
-            
-            return float.Parse(_value);
+
+            return _number;
         }
     }
 
@@ -31,7 +36,7 @@ public class Morph
             if(Type != MorphType.Symbol)
                 throw new InvalidOperationException("Morph is not a symbol");
 
-            return _getSymbol();
+            return _symbol!.Value;
         }
     }
 
@@ -39,36 +44,57 @@ public class Morph
     {
         get
         {
-            if (Type != MorphType.Identifier)
+            if(Type != MorphType.Identifier)
                 throw new InvalidOperationException("Morph is not an identifier");
-
-            return _value;
+            
+            return _identifier!;
         }
     }
     
-    private Symbol _getSymbol()
+    private void _handleState2()
     {
-        return _value switch
+        Type = MorphType.Symbol;
+        switch (_value)
         {
-            "call" => Symbol.Call,
-            "if" => Symbol.If,
-            "begin" => Symbol.Begin,
-            "end" => Symbol.End,
-            "do" => Symbol.Do,
-            "while" => Symbol.While,
-            "then" => Symbol.Then,
-            "odd" => Symbol.Odd,
-            "var" => Symbol.Var,
-            "const" => Symbol.Const,
-            ":=" => Symbol.Assignment,
-            ":" => Symbol.Colon,
-            "<=" => Symbol.SmallerOrEqual,
-            "<" => Symbol.SmallerThan,
-            "=" => Symbol.Equal,
-            ">=" => Symbol.GreaterOrEqual,
-            ">" => Symbol.GreaterThan,
-            _ => throw new Exception($"{_value} is no valid symbol")
-        };
+            case "CALL":
+                _symbol = Symbol.Call;
+                break;
+            case "IF":
+                _symbol = Symbol.If;
+                break;
+            case "BEGIN":
+                _symbol = Symbol.Begin;
+                break;
+            case "END":
+                _symbol = Symbol.End;
+                break;
+            case "DO":
+                _symbol = Symbol.Do;
+                break;
+            case "WHILE":
+                _symbol = Symbol.While;
+                break;
+            case "THEN":
+                _symbol = Symbol.Then;
+                break;
+            case "ODD":
+                _symbol = Symbol.Odd;
+                break;
+            case "VAR":
+                _symbol = Symbol.Var;
+                break;
+            case "CONST":
+                _symbol = Symbol.Const;
+                break;
+            case "PROCEDURE":
+                _symbol = Symbol.Procedure;
+                break;
+            default:
+                Type = MorphType.Identifier;
+                _identifier = _value;
+                break;
+                
+        }
     }
 
     public Morph(int lineNr, int colNr)
@@ -87,6 +113,45 @@ public class Morph
 
     public void Finish(int lastState)
     {
+        switch (lastState)
+        {
+            case 0:
+                Type = MorphType.Symbol;
+                _symbol = Symbol.Equal;
+                break;
+            case 1:
+                Type = MorphType.Number;
+                _number = float.Parse(_value);
+                break;
+            case 2:
+                _handleState2();
+                break;
+            case 3:
+                Type = MorphType.Symbol;
+                _symbol = Symbol.Colon;
+                break;
+            case 4:
+                Type = MorphType.Symbol;
+                _symbol = Symbol.SmallerThan;
+                break;
+            case 5:
+                Type = MorphType.Symbol;
+                _symbol = Symbol.GreaterThan;
+                break;
+            case 6:
+                Type = MorphType.Symbol;
+                _symbol = Symbol.Assignment;
+                break;
+            case 7:
+                Type = MorphType.Symbol;
+                _symbol = Symbol.SmallerOrEqual;
+                break;
+            case 8:
+                Type = MorphType.Symbol;
+                _symbol = Symbol.GreaterOrEqual;
+                break;
+                
+        }
         if (lastState is 3 or 4 or 5 or 0)
         {
             Type = MorphType.Symbol;

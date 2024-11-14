@@ -19,4 +19,7 @@ public enum Symbol
     Equal,
     GreaterOrEqual,
     GreaterThan,
+    Procedure,
+    ProgramEnd,
+    Eof,
 }

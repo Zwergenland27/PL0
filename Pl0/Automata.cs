@@ -5,7 +5,6 @@ public class Automata : IDisposable
     private StreamReader _reader;
 
     private int _currentState = 0;
-    private int _followState = 0;
     private bool _finished = false;
     private Morph? _currentMorph;
     
@@ -36,7 +35,7 @@ public class Automata : IDisposable
         void WR2() => WR(2);
         void WR3() => WR(3);
         void WR4() => WR(4);
-        void WR5() => WR(6);
+        void WR5() => WR(5);
         void WR6() => WR(6);
         void WR7() => WR(7);
         void WR8() => WR(8);
@@ -93,6 +92,7 @@ public class Automata : IDisposable
         _read();
         do
         {
+            Console.WriteLine($"currently in state {_currentState}");
             var nextState = _automataTable[_currentState][_characterVector[_currentChar]];
             nextState();
         } while (!_finished);
@@ -107,8 +107,9 @@ public class Automata : IDisposable
 
     public void R(int followState)
     {
-        _followState = followState;
+        Console.WriteLine($"Read and switch to state {followState}");
         _read();
+        _currentState = followState;
     }
     
     private void _read()
@@ -120,6 +121,7 @@ public class Automata : IDisposable
         }
         
         _currentChar = (char) characterRead;
+        Console.WriteLine($"Read character {_currentChar}");
         if (_currentChar == '\r')
         {
             _currentLine++;
@@ -130,9 +132,9 @@ public class Automata : IDisposable
 
     public void E(int followState)
     {
-        _currentState = _followState;
-        _followState = followState;
+        Console.WriteLine($"Exit and switch to state {followState}");
         _exit();
+        _currentState = followState;
     }
     
     private void _exit()
@@ -147,9 +149,9 @@ public class Automata : IDisposable
 
     public void WUR(int followState)
     {
-        _currentState = _followState;
-        _followState = followState;
+        Console.WriteLine($"Write upper read and switch to state {followState}");
         _writeUpperRead();
+        _currentState = followState;
     }
     
     private void _writeUpperRead()
@@ -166,9 +168,9 @@ public class Automata : IDisposable
 
     public void WR(int followState)
     {
-        _currentState = _followState;
-        _followState = followState;
+        Console.WriteLine($"Write read and switch to state {followState}");
         _writeRead();
+        _currentState = followState;
     }
     
     private void _writeRead()
@@ -185,9 +187,9 @@ public class Automata : IDisposable
 
     public void WRE(int followState)
     {
-        _currentState = _followState;
-        _followState = followState;
+        Console.WriteLine($"Write read exit and switch to state {followState}");
         _writeReadExit();
+        _currentState = followState;
     }
     
     private void _writeReadExit()
