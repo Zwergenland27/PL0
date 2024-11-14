@@ -20,6 +20,5 @@ public enum Symbol
     GreaterOrEqual,
     GreaterThan,
     Procedure,
-    ProgramEnd,
-    Eof,
+    ProgramEnd
 }

@@ -12,8 +12,6 @@ public class Automata : IDisposable
     private int _currentColumn = 0;
     private char _currentChar = ' ';
     
-    //TODO: Implement the automata table using delegates to the automate methods read, writeRead etc. and add the followState as int parameter
-    //[State][CharacterClass as int]
     private Action[][] _automataTable;
 
     private int[] _characterVector;
@@ -73,9 +71,9 @@ public class Automata : IDisposable
         _characterVector =
         [
             /*     0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F*/
-            /*00*/ 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
+            /*00*/ 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
             /*10*/ 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7,
-            /*20*/ 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            /*20*/ 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0,
             /*30*/ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 0, 5, 4, 6, 0,
             /*40*/ 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
             /*50*/ 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0,
@@ -117,6 +115,11 @@ public class Automata : IDisposable
         var characterRead = _reader.Read();
         if (characterRead == -1)
         {
+            if (_currentChar == '\0')
+            {
+                throw new InvalidDataException("End of file reached");
+            }
+            _currentChar = '\0';
             return;
         }
         

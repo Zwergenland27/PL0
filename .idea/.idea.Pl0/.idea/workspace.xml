@@ -7,7 +7,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e23eec6-23a6-498b-9bb3-e4cd78f31b04" name="Changes" comment="" />
+    <list default="true" id="8e23eec6-23a6-498b-9bb3-e4cd78f31b04" name="Changes" comment="Improved code to match more the example and fix some bugs">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Pl0/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Pl0/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pl0/Automata.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Automata.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pl0/Morph.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Morph.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pl0/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pl0/test.pl0" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/test.pl0" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,9 +38,11 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/koenigsf/source/repos/Pl0/Pl0/AC.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/koenigsf/source/repos/Pl0/Pl0/Automata.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/koenigsf/source/repos/Pl0/Pl0/Automata.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/koenigsf/source/repos/Pl0/Pl0/Morph.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/koenigsf/source/repos/Pl0/Pl0/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/koenigsf/source/repos/Pl0/Pl0/Symbol.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -48,20 +56,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.Pl0.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.Pl0.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Pl0" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -93,6 +101,8 @@
       <workItem from="1730966428124" duration="8199000" />
       <workItem from="1731066596130" duration="5844000" />
       <workItem from="1731073977473" duration="6046000" />
+      <workItem from="1731080091154" duration="271000" />
+      <workItem from="1731572202826" duration="4712000" />
     </task>
     <task id="LOCAL-00001" summary="First working Lexer using automata table">
       <option name="closed" value="true" />
@@ -126,7 +136,31 @@
       <option name="project" value="LOCAL" />
       <updated>1731079926994</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add idea project files">
+      <option name="closed" value="true" />
+      <created>1731080127859</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1731080127859</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Move current state assignment to automata action methods">
+      <option name="closed" value="true" />
+      <created>1731572838851</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1731572838851</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Improved code to match more the example and fix some bugs">
+      <option name="closed" value="true" />
+      <created>1731576301369</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1731576301369</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,6 +185,28 @@
     <MESSAGE value="Improve automate table by using local functions" />
     <MESSAGE value="Use character vector instead of enum" />
     <MESSAGE value="use character vector instead of enum" />
-    <option name="LAST_COMMIT_MESSAGE" value="use character vector instead of enum" />
+    <MESSAGE value="Add idea project files" />
+    <MESSAGE value="Move current state assignment to automata action methods" />
+    <MESSAGE value="Improved code to match more the example and fix some bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved code to match more the example and fix some bugs" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Pl0/Automata.cs</url>
+          <line>92</line>
+          <properties documentPath="C:\Users\koenigsf\source\repos\Pl0\Pl0\Automata.cs" containingFunctionPresentation="Method 'Lex'">
+            <startOffsets>
+              <option value="2821" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2878" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

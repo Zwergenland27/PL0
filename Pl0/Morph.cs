@@ -56,6 +56,9 @@ public class Morph
         Type = MorphType.Symbol;
         switch (_value)
         {
+            case ".":
+                _symbol = Symbol.ProgramEnd;
+                break;
             case "CALL":
                 _symbol = Symbol.Call;
                 break;
