@@ -1,27 +1,29 @@
 ﻿using Pl0;
 
-var automata = new Automata("C:\\Users\\koenigsf\\source\\repos\\Pl0\\Pl0\\test.pl0");
+var filePath = args[0];
+
+var automata = new Automata(filePath);
 
 bool end = false;
 
 do
 {
-    var morp = automata.Lex();
-    if (morp.Type == MorphType.Symbol)
+    var morph = automata.Lex();
+    if (morph.Type == MorphType.Symbol)
     {
-        Console.WriteLine($"SYMBOL {morp.Symbol} at {morp.LineNr}, {morp.ColNr}");
-        if (morp.Symbol == Symbol.EndOfFile)
+        Console.WriteLine($"SYMBOL {morph.Symbol} at {morph.LineNr}, {morph.ColNr}");
+        if (morph.Symbol == Symbol.EndOfFile)
         {
             end = true;
         }
     }
-    if(morp.Type == MorphType.Number)
+    if(morph.Type == MorphType.Number)
     {
-        Console.WriteLine($"NUMBER {morp.Number} at {morp.LineNr}, {morp.ColNr}");
+        Console.WriteLine($"NUMBER {morph.Number} at {morph.LineNr}, {morph.ColNr}");
     }
 
-    if (morp.Type == MorphType.Identifier)
+    if (morph.Type == MorphType.Identifier)
     {
-        Console.WriteLine($"IDENTIFIER {morp.Identifier} at {morp.LineNr}, {morp.ColNr}");
+        Console.WriteLine($"IDENTIFIER {morph.Identifier} at {morph.LineNr}, {morph.ColNr}");
     }
 }while(!end);

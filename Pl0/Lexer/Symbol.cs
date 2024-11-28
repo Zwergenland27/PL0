@@ -30,4 +30,6 @@ public enum Symbol
     Minus,
     Comma,
     Semicolon,
+    OpenBraces,
+    CloseBraces,
 }

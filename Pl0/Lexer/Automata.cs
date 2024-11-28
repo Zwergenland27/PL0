@@ -11,7 +11,7 @@ public class Automata : IDisposable
     private Morph? _currentMorph;
     
     private int _currentLine = 1;
-    private int _currentColumn = 1;
+    private int _currentColumn = 0;
     private char _currentChar = ' ';
     
     private Action[][] _automataTable;
@@ -47,7 +47,6 @@ public class Automata : IDisposable
         void WUR2() => WUR(2);
         
         //Exit states
-        void E0() => E(0);
         void E1() => E(1);
         void E2() => E(2);
         void E3() => E(3);

@@ -12,11 +12,11 @@ public class Morph
     
     public int LineNr { get; private init; }
     
-    public int ColNr { get; private init; }
+    public int ColNr { get; private set; }
     
     public int Length { get; private set; }
 
-    private string _value;
+    private string _value = "";
 
     public float Number
     {
@@ -88,6 +88,12 @@ public class Morph
                 break;
             case "PROCEDURE":
                 _symbol = Symbol.Procedure;
+                break;
+            case "(":
+                _symbol = Symbol.OpenBraces;
+                break;
+            case ")":
+                _symbol = Symbol.CloseBraces;
                 break;
             default:
                 Type = MorphType.Identifier;

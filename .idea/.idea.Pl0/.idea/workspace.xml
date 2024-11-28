@@ -8,12 +8,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8e23eec6-23a6-498b-9bb3-e4cd78f31b04" name="Changes" comment="Implemented ProgramEnd and Eof">
+      <change afterPath="$PROJECT_DIR$/Pl0/Parser/Curve.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pl0/Parser/GraphCurve.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pl0/Parser/GraphEndCurve.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pl0/Parser/MorphCurve.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pl0/Parser/NilCurve.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pl0/Parser/Parser.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pl0/Parser/SymbolCurve.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Pl0/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Pl0/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pl0/Automata.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Automata.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pl0/Morph.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Morph.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pl0/Automata.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Lexer/Automata.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pl0/Morph.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Lexer/Morph.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pl0/MorphType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Lexer/MorphType.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pl0/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pl0/Symbol.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Symbol.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pl0/test.pl0" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/test.pl0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pl0/Symbol.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Lexer/Symbol.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +28,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DpaMonitoringSettings">
-    <option name="autoShow" value="false" />
+    <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,7 +42,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Zwergenland27/PL0.git&quot;,
-    &quot;accountId&quot;: &quot;c5a23259-58a1-4e74-bf3f-6fe520147e32&quot;
+    &quot;accountId&quot;: &quot;52945dac-ffbd-4b7f-9131-653bca79cf8d&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -58,25 +65,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Project.Pl0.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Project.Pl0.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Pl0" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/Pl0/bin/Debug/net8.0/Pl0.exe" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;C:\Users\koenigsf\Documents\PL0\Pl0\test.pl0&quot;" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Pl0/bin/Debug/net8.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
@@ -86,7 +94,7 @@
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
+      <option name="PROJECT_TFM" value="net8.0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -105,6 +113,8 @@
       <workItem from="1731073977473" duration="6046000" />
       <workItem from="1731080091154" duration="271000" />
       <workItem from="1731572202826" duration="9003000" />
+      <workItem from="1732177787881" duration="5106000" />
+      <workItem from="1732783604273" duration="2676000" />
     </task>
     <task id="LOCAL-00001" summary="First working Lexer using automata table">
       <option name="closed" value="true" />
