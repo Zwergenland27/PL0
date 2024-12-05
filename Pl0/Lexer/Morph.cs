@@ -117,6 +117,9 @@ public class Morph
             case "=":
                 _symbol = Symbol.Equal;
                 break;
+            case "#":
+                _symbol = Symbol.Unequal;
+                break;
             case "!":
                 _symbol = Symbol.Output;
                 break;

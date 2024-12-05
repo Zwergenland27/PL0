@@ -7,20 +7,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e23eec6-23a6-498b-9bb3-e4cd78f31b04" name="Changes" comment="Implemented ProgramEnd and Eof">
-      <change afterPath="$PROJECT_DIR$/Pl0/Parser/Curve.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pl0/Parser/GraphCurve.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pl0/Parser/GraphEndCurve.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pl0/Parser/MorphCurve.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pl0/Parser/NilCurve.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pl0/Parser/Parser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pl0/Parser/SymbolCurve.cs" afterDir="false" />
+    <list default="true" id="8e23eec6-23a6-498b-9bb3-e4cd78f31b04" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Pl0/Parser/Graph.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Pl0/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Pl0/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pl0/Automata.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Lexer/Automata.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pl0/Morph.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Lexer/Morph.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pl0/MorphType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Lexer/MorphType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pl0/Lexer/Morph.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Lexer/Morph.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pl0/Lexer/Symbol.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Lexer/Symbol.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pl0/Parser/GraphCurve.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Parser/GraphCurve.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pl0/Parser/Parser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Parser/Parser.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pl0/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pl0/Symbol.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/Lexer/Symbol.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pl0/test.pl0" beforeDir="false" afterPath="$PROJECT_DIR$/Pl0/test.pl0" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,21 +60,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.Pl0.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.Pl0.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Pl0" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/Pl0/bin/Debug/net8.0/Pl0.exe" />
@@ -114,7 +109,10 @@
       <workItem from="1731080091154" duration="271000" />
       <workItem from="1731572202826" duration="9003000" />
       <workItem from="1732177787881" duration="5106000" />
-      <workItem from="1732783604273" duration="2676000" />
+      <workItem from="1732783604273" duration="2796000" />
+      <workItem from="1732787201783" duration="3242000" />
+      <workItem from="1732799755973" duration="394000" />
+      <workItem from="1733387243755" duration="5418000" />
     </task>
     <task id="LOCAL-00001" summary="First working Lexer using automata table">
       <option name="closed" value="true" />
@@ -180,7 +178,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731577425379</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="First parser version that maybe works?">
+      <option name="closed" value="true" />
+      <created>1732786419418</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1732786419418</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,13 +215,7 @@
     <MESSAGE value="Move current state assignment to automata action methods" />
     <MESSAGE value="Improved code to match more the example and fix some bugs" />
     <MESSAGE value="Implemented ProgramEnd and Eof" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented ProgramEnd and Eof" />
-  </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="DotNetProject">
-        <watch expression="_currentChar" language="C#" />
-      </configuration>
-    </watches-manager>
+    <MESSAGE value="First parser version that maybe works?" />
+    <option name="LAST_COMMIT_MESSAGE" value="First parser version that maybe works?" />
   </component>
 </project>

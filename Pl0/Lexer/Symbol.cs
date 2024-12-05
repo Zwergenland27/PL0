@@ -17,6 +17,7 @@ public enum Symbol
     SmallerOrEqual,
     SmallerThan,
     Equal,
+    Unequal,
     GreaterOrEqual,
     GreaterThan,
     Procedure,

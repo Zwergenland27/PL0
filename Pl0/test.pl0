@@ -1,1 +1,1 @@
-const c=0,d=1;var a,x,y,b;begin?a;?b;x:=0;while x<=a dobeginy:=0;while y<=b dobegin!x*y;y:=y+1end;x:=x+1endend.
+var f,x;procedure fakult;var xl;beginxl:=x;x:=x-1;if x>0 thenbegincall fakult;f:=f*xlendend;begin?x;f:=1;call fakult;!fend.
